@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
 //        huq::println_tab(path);
         std::filesystem::path file = path;
         ProblemToptw inst;
-        inst.instname = file.filename();
+        inst.instname = file.filename().string();
         inst.loadInstance(path);
         inst.prepare();
         for (int m = 1; m <= 4; ++m) {
@@ -107,7 +107,7 @@ void getAllInstancePaths(const AlgoParameter &param, std::vector<std::string> &p
 //    for (auto &p: std::filesystem::directory_iterator(dir_data)) {
         std::filesystem::path file = p.path();
         std::string pathname = p.path().string();
-        std::string filename = p.path().filename();
+        std::string filename = p.path().filename().string();
         bool match = p.path().extension() == param.test_extension;
         if (match && param.test_prefix.length() > 0) {
             match = filename.find(param.test_prefix, 0) == 0;
